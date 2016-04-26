@@ -1,0 +1,93 @@
+INPUT - ARRAY:
+
+Array
+(
+    [data] => Array
+        (
+            [image_url] => Array
+                (
+                    [0] => http://jodahome.com/wp-content/uploads/2015/07/Jungle-Road-Background-Wallpaper-HD.jpg
+                    [1] => http://jodahome.com/wp-content/uploads/2015/07/1680x1050-desktop-fantasy-apple-nature-825x510.jpg
+                )
+
+            [s3] => Array
+                (
+                    [access_key] => XXXXXXXXXXXXXXXXXXXX
+                    [secret_key] => xxxxxxxxxxxxxxxxxx+xxxxxxxxxxx
+                    [bucket] => your-bucket-name
+                    [path] => folderName
+                )
+
+            [image_process] => Array
+                (
+                    [blur] => Array
+                        (
+                            [0] => 10
+                        )
+
+                    [brightness] => Array
+                        (
+                            [0] => 30
+                        )
+
+                    [contrast] => Array
+                        (
+                            [0] => 30
+                        )
+
+                    [crop] => Array
+                        (
+                            [0] => 160
+                            [1] => 110
+                            [2] => 460
+                            [3] => 360
+                        )
+
+                    [flip] => Array
+                        (
+                            [0] => Y
+                        )
+
+                    [resize] => Array
+                        (
+                            [0] => 100
+                            [1] => 100
+                        )
+
+                )
+
+        )
+
+)
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+KEY 			OPTION		INPUT			DESCRIPTION
+------------------------------------------------------------------------------------------------------------------------------------------------
+image_url		Required	string/array	    	Original Image URL
+------------------------------------------------------------------------------------------------------------------------------------------------
+s3             	 	Required	string			For holding S3 details (Contains sub-keys)
+   access_key      	Required  	string             	AWS access key
+   secret_key      	Required   	string             	AWS secret key
+   bucket          	Required   	string             	AWS bucket name
+   path            	Required   	tring            	AWS file path inside bucket
+------------------------------------------------------------------------------------------------------------------------------------------------
+image_process		Optional	array			For processing images (Contains sub-keys)
+	blur		Optional	array			takes one parameter for number of passing 
+	brightness	Optional	array			takes one parameter for level [-255 to 255]
+	contrast	Optional	array			takes one parameter for level [-255 to 255]
+	crop		Optional	array			takes four parameters [Left,Top,Right,Bottom]
+	flip		Optional	array			takes one parameter for horizantal/vertical flipping [x/y]
+	resize		Optional	array			takes two parameters [Width,Height]
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+OUTPUT - JSON:
+
+{  
+   "error_msg":[  
+      "Invalid image: http:\/\/jodahome.com\/wp-content\/uploads\/2015\/07\/Jungle-Road-Background-Wallpaper-HD.jpg"
+   ],
+   "success_msg":[  
+      "http:\/\/jodahome.com\/wp-content\/uploads\/2015\/07\/1680x1050-desktop-fantasy-apple-nature-825x510.jpg : Processed"
+   ]
+}
